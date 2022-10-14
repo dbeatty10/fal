@@ -49,9 +49,6 @@ from .el_client import FalElClient
 
 from fal.feature_store.feature import Feature
 
-import firebase_admin
-from firebase_admin import firestore
-
 import uuid
 
 from decimal import Decimal
@@ -807,6 +804,8 @@ class FalDbt:
             return
 
         try:
+            import firebase_admin
+            from firebase_admin import firestore
             from dbt.adapters.bigquery.connections import BigQueryConnectionManager
         except ModuleNotFoundError as not_found:
             raise FalGeneralException(
